@@ -1,0 +1,485 @@
+/* CORES DO PROJETO */
+:host {
+  --verde: #245c3a;
+  --verde-claro: #dceadf;
+  --verde-medio: #4f7d60;
+
+  --grena: #751d3a;
+  --grena-escuro: #59152b;
+  --grena-claro: #f2dfe5;
+
+  --branco: #ffffff;
+  --texto: #333333;
+
+  display: block;
+  min-height: 100vh;
+
+  padding: 70px 20px;
+
+  background:
+    radial-gradient(circle at 10% 15%, #dceadf 0, transparent 25%),
+    radial-gradient(circle at 90% 85%, #f2dfe5 0, transparent 25%),
+    linear-gradient(135deg, #f8faf8, #fff8fa);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* CÍRCULO DECORATIVO */
+:host::before {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  background: var(--grena);
+
+  border-radius: 50%;
+
+  top: -130px;
+  right: -80px;
+
+  opacity: 0.08;
+}
+
+
+/* OUTRO CÍRCULO */
+:host::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  background: var(--verde);
+
+  border-radius: 50%;
+
+  bottom: -160px;
+  left: -100px;
+
+  opacity: 0.08;
+}
+
+
+/* CONTAINER */
+.container {
+  width: 100%;
+  max-width: 750px;
+
+  margin: 0 auto;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* TÍTULO */
+h1 {
+  text-align: center;
+
+  color: var(--grena);
+
+  font-size: 42px;
+
+  margin-bottom: 12px;
+
+  letter-spacing: 1px;
+}
+
+
+/* LINHA EMBAIXO DO TÍTULO */
+h1::after {
+  content: "";
+
+  display: block;
+
+  width: 80px;
+  height: 5px;
+
+  margin: 12px auto 35px;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    var(--verde),
+    var(--grena)
+  );
+}
+
+
+/* CAIXA DE BUSCA */
+.busca {
+  display: flex;
+
+  gap: 12px;
+
+  padding: 20px;
+
+  margin-bottom: 30px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid rgba(117, 29, 58, 0.1);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 3px 8px rgba(117, 29, 58, 0.08);
+
+  backdrop-filter: blur(10px);
+}
+
+
+/* CAMPO CEP */
+input {
+  flex: 1;
+
+  height: 55px;
+
+  padding: 0 18px;
+
+  border: 2px solid #c9d8cd;
+
+  border-radius: 12px;
+
+  background: #fafdfb;
+
+  color: var(--texto);
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition: all 0.3s ease;
+}
+
+
+/* TEXTO DO INPUT */
+input::placeholder {
+  color: #8b9b90;
+}
+
+
+/* INPUT SELECIONADO */
+input:focus {
+  border-color: var(--verde);
+
+  background: white;
+
+  box-shadow:
+    0 0 0 4px rgba(36, 92, 58, 0.12);
+
+  transform: translateY(-1px);
+}
+
+
+/* BOTÃO */
+button {
+  min-width: 130px;
+
+  height: 55px;
+
+  padding: 0 25px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    var(--grena),
+    var(--grena-escuro)
+  );
+
+  color: var(--branco);
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 15px rgba(117, 29, 58, 0.25);
+
+  transition: all 0.3s ease;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+/* EFEITO DO BOTÃO */
+button::before {
+  content: "";
+
+  position: absolute;
+
+  width: 40px;
+  height: 100px;
+
+  background: rgba(255, 255, 255, 0.2);
+
+  top: -20px;
+  left: -60px;
+
+  transform: rotate(25deg);
+
+  transition: 0.5s;
+}
+
+
+/* PASSANDO O MOUSE */
+button:hover {
+  background: linear-gradient(
+    135deg,
+    var(--verde),
+    #173e27
+  );
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 20px rgba(36, 92, 58, 0.3);
+}
+
+
+/* BRILHO NO BOTÃO */
+button:hover::before {
+  left: 150%;
+}
+
+
+/* CLICANDO */
+button:active {
+  transform: scale(0.96);
+}
+
+
+/* CONSULTANDO */
+.loading {
+  width: fit-content;
+
+  margin: 10px auto 25px;
+
+  padding: 12px 22px;
+
+  border-radius: 30px;
+
+  background: var(--verde-claro);
+
+  color: var(--verde);
+
+  font-weight: bold;
+
+  animation: pulsar 1.2s infinite;
+}
+
+
+/* ANIMAÇÃO */
+@keyframes pulsar {
+
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+
+/* ERRO */
+.erro {
+  margin-bottom: 25px;
+
+  padding: 15px 18px;
+
+  background: #fff0f3;
+
+  color: var(--grena);
+
+  border-left: 5px solid var(--grena);
+
+  border-radius: 10px;
+
+  font-weight: bold;
+
+  box-shadow:
+    0 4px 12px rgba(117, 29, 58, 0.08);
+}
+
+
+/* CARD DO ENDEREÇO */
+.card {
+  position: relative;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,1),
+      rgba(249,252,250,1)
+    );
+
+  padding: 32px;
+
+  border-radius: 22px;
+
+  border: 1px solid #e0e9e2;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.10);
+
+  overflow: hidden;
+
+  animation: aparecer 0.5s ease;
+}
+
+
+/* FAIXA DE CIMA */
+.card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 7px;
+
+  background: linear-gradient(
+    90deg,
+    var(--verde),
+    var(--grena)
+  );
+}
+
+
+/* ANIMAÇÃO DO CARD */
+@keyframes aparecer {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* TÍTULO DO CARD */
+.card h2 {
+  color: var(--grena);
+
+  font-size: 27px;
+
+  margin-bottom: 25px;
+
+  padding-bottom: 15px;
+
+  border-bottom: 2px solid var(--verde-claro);
+}
+
+
+/* INFORMAÇÕES */
+.card p {
+  margin: 10px 0;
+
+  padding: 13px 16px;
+
+  background: #f6faf7;
+
+  border-left: 4px solid var(--verde);
+
+  border-radius: 9px;
+
+  color: #444;
+
+  font-size: 16px;
+
+  transition: all 0.25s ease;
+}
+
+
+/* EFEITO NAS INFORMAÇÕES */
+.card p:hover {
+  background: var(--verde-claro);
+
+  padding-left: 22px;
+
+  transform: translateX(3px);
+}
+
+
+/* CEP, RUA, BAIRRO... */
+.card strong {
+  color: var(--grena);
+
+  margin-right: 5px;
+}
+
+
+/* CARD AO PASSAR O MOUSE */
+.card:hover {
+  box-shadow:
+    0 20px 50px rgba(36, 92, 58, 0.13);
+}
+
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+  :host {
+    padding: 40px 15px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .busca {
+    flex-direction: column;
+
+    padding: 16px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .card {
+    padding: 25px 18px;
+  }
+
+  .card h2 {
+    font-size: 23px;
+  }
+}

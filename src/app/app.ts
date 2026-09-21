@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FormCEP } from './features/form-cep/form-cep';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, FormCEP],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
